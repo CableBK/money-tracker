@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white),
                     ),
                     Text(
-                      'Team folder',
+                      'by CableBK',
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
@@ -89,9 +89,92 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(25),
+              children: [
+                const Text(
+                  'Recently updated',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [],
+                ),
+                Divider(
+                  height: 60,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      'เมนูลัด',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Create New',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                buildQuickMenu('Kabel'),
+                buildQuickMenu('Kabel'),
+                buildQuickMenu('Kabel'),
+              ],
+            ),
+          )
         ],
       ),
       //bottomNavigationBar: ,
     );
   }
+}
+
+Container buildQuickMenu(String quickMenu) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 8),
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    height: 65,
+    decoration: BoxDecoration(
+        color: Colors.grey.shade200, borderRadius: BorderRadius.circular(15)),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Icon(
+              Icons.folder,
+              color: Colors.amber,
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+            Text(
+              quickMenu,
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert_rounded, color: Colors.grey))
+      ],
+    ),
+  );
 }
