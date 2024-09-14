@@ -10,6 +10,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  double availableScreenWidth = 0;
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,7 +144,47 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      //bottomNavigationBar: ,
+      floatingActionButton: Container(
+        decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+          BoxShadow(color: Colors.white, spreadRadius: 7, blurRadius: 1)
+        ]),
+        child: FloatingActionButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(90)),
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyle(fontSize: 15, color: Colors.black),
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        currentIndex: selectedIndex,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time),
+            label: 'Market',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time),
+            label: 'QR',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box),
+            label: 'More',
+          ),
+        ],
+      ),
     );
   }
 }
