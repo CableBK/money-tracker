@@ -16,10 +16,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Money Tracker'),
+        centerTitle: true,
+        backgroundColor: Colors.red.shade900,
+        actions: <Widget>[
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+        ],
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.person_rounded)),
+      ),
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          Container(
+          /*Container(
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
             alignment: Alignment.bottomCenter,
             height: 170,
@@ -91,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-          ),
+          ),*/
           Expanded(
             child: ListView(
               padding: EdgeInsets.all(25),
@@ -155,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: const Icon(Icons.add),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: TextStyle(fontSize: 15, color: Colors.black),
         onTap: (index) {
@@ -168,20 +177,16 @@ class _HomeScreenState extends State<HomeScreen> {
         showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.access_time),
-            label: 'Home',
+            icon: Icon(Icons.home),
+            label: 'หน้าแรก',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.access_time),
-            label: 'Market',
+            icon: Icon(Icons.search),
+            label: 'ค้นหา',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.access_time),
-            label: 'QR',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_box),
-            label: 'More',
+            icon: Icon(Icons.more_horiz),
+            label: 'อื่น ๆ',
           ),
         ],
       ),
@@ -199,20 +204,31 @@ Container buildQuickMenu(String quickMenu) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            Icon(
-              Icons.folder,
-              color: Colors.amber,
+        Container(
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Colors.transparent,
             ),
-            const SizedBox(
-              width: 12,
+            onPressed: () {},
+            child: Row(
+              children: [
+                Icon(
+                  Icons.add,
+                  color: Colors.red.shade900,
+                ),
+                const SizedBox(
+                  width: 12,
+                ),
+                Text(
+                  quickMenu,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
             ),
-            Text(
-              quickMenu,
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
+          ),
         ),
         IconButton(
             onPressed: () {},
